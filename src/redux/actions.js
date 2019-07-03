@@ -1,5 +1,5 @@
 import {
-  UPDATE_MSG, UPDATE_MSGLIST, UPDATE_USERNAME
+  UPDATE_MSG, UPDATE_MSGLIST, UPDATE_USERNAME, UPDATE_USERNAMELIST
 } from './constants';
 
 export const updateMessage = (payload) => ({

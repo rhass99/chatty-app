@@ -10,12 +10,6 @@ const chatReducer = (state={}, {type, payload}) => {
         message : payload
       }
     case UPDATE_MSGLIST:
-      console.log("updated")
-      console.log(payload)
-      console.log({
-        ...state,
-        messageList: [...state.messageList, payload]
-      })
       return {
         ...state,
         messageList : [...state.messageList, payload]

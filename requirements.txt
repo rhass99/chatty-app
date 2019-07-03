@@ -16,3 +16,17 @@ Server events:
 
 UI
 1 - Header display number of connected users
+
+user sends a message like this
+  {
+    messageId: 12344565,
+    username: "rami",
+    message: "this is a text message",
+  }
+server send back this
+  {
+    messageId: 1234,
+    username: "rami",
+    message: "this is...",
+    type: "sys" or "msg"
+  }

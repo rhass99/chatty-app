@@ -3,25 +3,21 @@ import React, {Component} from 'react';
 import {updateMessage, updateMessageList, updateUsername} from '../redux/actions';
 
 export const mapStateToProps = (initial) => {
-  const {username, message, messageList} = initial;
-  return {username, message, messageList}
+  const {username, message, messageList, socket} = initial;
+  return {username, message, messageList, socket}
 }
 
 export const mapDispatchToProps = (dispatch) => {
   return {
     handleUpdateUsername: (e) => {
-      dispatch(updateUsername({
-        username: e.target.value,
-      }))
+      dispatch(updateUsername(e.target.value))
     },
     handleUpdateMessage: (e) => {
-      dispatch(updateMessage({
-        message: e.target.value,
-      }))
+      dispatch(updateMessage(e.target.value))
     },
     handleUpdateMessageList: (newMessage) => {
-      console.log("worked")
       dispatch(updateMessageList(newMessage))
+      dispatch(updateMessage(''))
     }
   }
 }
@@ -42,12 +38,11 @@ export const messagesContainer = (Messages) => (
 
 export const footerContainer = (Footer) => (
   class extends Component {
-    render() {
-      const conn = new WebSocket('ws://localhost:3001')
-      const { username, message, messageList, handleUpdateMessageList, handleUpdateMessage, handleUpdateUsername} = this.props;
+    render() {      
+      const { username, message, messageList, handleUpdateMessageList, handleUpdateMessage, handleUpdateUsername, socket} = this.props;
       return (
-        <Footer 
-        socket={conn}
+        <Footer
+        socket={socket}
         messageList={messageList}
         username={username}
         message={message}

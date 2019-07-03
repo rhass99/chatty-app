@@ -5,12 +5,8 @@ import FooterCMP from './footer';
 
 class Main extends Component {
 
-  handleAddMessage = () => {
-    console.log("hi")
-  }
 
-  render (){
-    
+  render (){   
     return (
       <div>
         <Nav />

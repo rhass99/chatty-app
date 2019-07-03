@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const SysMessage = (props) => (
   <div className="message system">
-    {props.message.text}
+    {`User ${props.message.oldusername} changed his name to ${props.message.newusername}`}
   </div>
 )
 

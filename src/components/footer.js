@@ -3,8 +3,9 @@ import {footerContainer, mapDispatchToProps, mapStateToProps} from './container'
 import { connect } from 'react-redux';
 
 const Footer = (props) => {
-  // props.socket.onmessage = (message) => {console.log(message)}
-  console.log(props.messageList)
+  props.socket.onmessage = ((message) => {
+    JSON.parse(message.data).forEach(x => props.handleUpdateMessageList(x))
+  })
   return (  
     <footer className="chatbar">
       <input 
@@ -15,9 +16,36 @@ const Footer = (props) => {
       <input 
       className="chatbar-message" 
       placeholder="Type a message and hit ENTER"
+      value={props.message}
       onChange={props.handleUpdateMessage}
-      onKeyPress=
-      {
+      onKeyPress={
+        (e) => {
+          if (e.key == 'Enter') {
+            props.socket.send(JSON.stringify(
+              {
+              text: props.message,
+              user: props.username
+              })
+            )
+          }
+        } 
+      }
+      />
+    </footer>
+  )
+}
+
+const FooterCMP = connect(mapStateToProps, mapDispatchToProps)(footerContainer(Footer))
+export default FooterCMP
+
+/**
+ * socket.AddEventListener('message', dispatch(action))
+ * in the clinet keep a flag of isOpen
+ * if open u can send
+ * if close create a new socket connection
+ */
+/**
+ {
         (e) => {
           if (e.key === 'Enter') {
             props.handleUpdateMessageList(
@@ -31,10 +59,4 @@ const Footer = (props) => {
           }
         } 
       }
-      />
-    </footer>
-  )
-}
-
-const FooterCMP = connect(mapStateToProps, mapDispatchToProps)(footerContainer(Footer))
-export default FooterCMP
+ */
