@@ -1,0 +1,3 @@
+export const UPDATE_MSG = 'UPDATE_MSG'
+export const UPDATE_USERNAME = 'UPDATE_USERNAME'
+export const UPDATE_MSGLIST = 'UPDATE_MSGLIST'

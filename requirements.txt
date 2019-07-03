@@ -1,0 +1,18 @@
+Socket events:
+1 - on sending a chat message -> update all other users
+2 - on user change name -> Send sys message of name update
+3 - on user joining -> update header user count
+
+Client events:
+--> Open a websocket connection
+1 - Send chat messages
+2 - Send Status updates
+3 - Recieves Stuff from server
+
+Server events:
+1 - Receieves messages from Client and checks type
+2 - Sends back JSON messages back to all connected clients in JSON + uid
+3 - manages user count when users log in and out
+
+UI
+1 - Header display number of connected users
