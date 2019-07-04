@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import {updateMessage, updateMessageList, updateUsername} from '../redux/actions';
+import {updateMessage, updateMessageList, updateUsername, updateUserCount} from '../redux/actions';
 
 export const mapStateToProps = (initial) => {
-  const {username, message, messageList, socket} = initial;
-  return {username, message, messageList, socket}
+  const {username, message, messageList, socket, connectedUsers} = initial;
+  return {username, message, messageList, socket, connectedUsers}
 }
 
 export const mapDispatchToProps = (dispatch) => {
@@ -18,6 +18,9 @@ export const mapDispatchToProps = (dispatch) => {
     handleUpdateMessageList: (newMessage) => {
       dispatch(updateMessageList(newMessage))
       dispatch(updateMessage(''))
+    },
+    handleUpdateConnectedUsers: (userNumber) => {
+      dispatch(updateUserCount(userNumber))
     }
   }
 }
@@ -39,7 +42,7 @@ export const messagesContainer = (Messages) => (
 export const footerContainer = (Footer) => (
   class extends Component {
     render() {      
-      const { username, message, messageList, handleUpdateMessageList, handleUpdateMessage, handleUpdateUsername, socket} = this.props;
+      const { username, message, messageList, handleUpdateMessageList, handleUpdateMessage, handleUpdateUsername, socket, handleUpdateConnectedUsers} = this.props;
       return (
         <Footer
         socket={socket}
@@ -49,6 +52,20 @@ export const footerContainer = (Footer) => (
         handleUpdateMessageList={handleUpdateMessageList}
         handleUpdateMessage={handleUpdateMessage}
         handleUpdateUsername={handleUpdateUsername}
+        handleUpdateConnectedUsers={handleUpdateConnectedUsers}
+        />
+      )
+    }
+  }
+)
+
+export const navContainer = (Nav) => (
+  class extends Component {
+    render() {
+      const { connectedUsers } = this.props
+      return (
+        <Nav 
+        connectedUsers={connectedUsers}
         />
       )
     }

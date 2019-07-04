@@ -4,8 +4,19 @@ import { connect } from 'react-redux';
 
 const Footer = (props) => {
   props.socket.onmessage = ((message) => {
-    JSON.parse(message.data).forEach(x => props.handleUpdateMessageList(x))
+    const msg = JSON.parse(message.data)
+    console.log(msg[0])
+    switch(msg[0].purpose) {
+      case("count"):
+        console.log(msg[0].count);
+        //push to redux
+        props.handleUpdateConnectedUsers(msg[0].count)
+        break;
+      case("text"):
+        JSON.parse(message.data).forEach(x => props.handleUpdateMessageList(x))
+    }
   })
+
   return (  
     <footer className="chatbar">
       <input 

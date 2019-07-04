@@ -55,12 +55,14 @@ const newMessage = (ws, msg) => {
       id: Math.random().toString().replace('0.', ''),
       type: "sys",
       oldusername: oldUsername,
-      newusername: msg.user
+      newusername: msg.user,
+      purpose:"text"
     },{
       type: "txt",
       id: Math.random().toString().replace('0.', ''),
       text: msg.text,
-      user: msg.user
+      user: msg.user,
+      purpose:"text"
     }]
   } else {
     console.log(userList)
@@ -68,7 +70,8 @@ const newMessage = (ws, msg) => {
       type: "txt",
       id: Math.random().toString().replace('0.', ''),
       text: msg.text,
-      user: msg.user
+      user: msg.user,
+      purpose:"text"
     }]
   }
 }
@@ -78,6 +81,10 @@ const broadcast = (msg) => {
 }
 
 io.on('connection', (ws) => {
+  broadcast([{
+    purpose:"count",
+    count:io.clients.size
+  }])
   connected(ws)
   // Do something on new connection
   // Generate new clientID and adds it to the connection object
@@ -92,5 +99,9 @@ io.on('connection', (ws) => {
   });
   ws.on('close', () => {
     // Done do nothing
+    broadcast([{
+      purpose:"count",
+      count:io.clients.size
+    }])
   })
 });
