@@ -8,7 +8,7 @@ A minimal and light weight websocket chat app
 Clone the repo
 
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
+git clone git@github.com:rhass99/chatty-app.git
 cd react-simple-boilerplate
 git remote rm origin
 git remote add origin [YOUR NEW REPOSITORY]

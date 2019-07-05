@@ -24,6 +24,7 @@ const connected = (ws) => {
 // Called every time a new message is recieved
 // Checks if this is the first msg for this user
 // Checks if the user changed his username
+//
 const checkUsername = (ws, msg) => {
   for(let user of userList) {
     if (user.ChatClientID === ws.ChatClientID) {
