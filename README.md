@@ -4,42 +4,46 @@ Chatty App
 A minimal and light weight websocket chat app
 
 ### Usage
+The root of the repo is the react client
+The folder chat-server is the websocket server
 
-Clone the repo
+### Steps
 
-```
-git clone git@github.com:rhass99/chatty-app.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+#### To run the server
 
-Install the dependencies and start the server.
+1 - Clone the repo
 
 ```
-npm install
-npm start
-open http://localhost:3000
+$ git clone git@github.com:rhass99/chatty-app.git
 ```
 
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
+2 - cd into the folder chat-server
 ```
-npm run lint
+$ cd chat-server
 ```
 
-### Dependencies
+3 - Install the dependencies and start the server
+```
+$ yarn install
+$ yarn start
+```
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+#### To run the client
+
+1 - Open a new Terminal window and cd into the repo root
+
+```
+$ cd /path/to/repo/root/
+```
+
+2 - Install the dependencies and start the client in the root of the repo
+```
+$ yarn install
+$ yarn start
+```
+
+3 - Go to http://localhost:3000 in your browser to open the client
+
+### Screenshots
+![Alt text](/screenshots/1.jpg?raw=true "Optional Title")
+![Alt text](/screenshots/2.jpg?raw=true "Optional Title")
