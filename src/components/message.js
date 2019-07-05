@@ -15,6 +15,7 @@ const TextMessage = (props) => (
   </div>
 )
 
+// Message component renders either system or text message depending on message type
 const Message = (props) => {
   console.log(props.messageList)
   return (

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Nav = (props) => (
   <nav className="navbar">
     <a href="/" className="navbar-brand">Chatty</a>
-    <h4 className="navbar-users">{`Usercount: ${props.connectedUsers}`}</h4>
+    <h4 className="navbar-users">{`Online users: ${props.connectedUsers}`}</h4>
   </nav>
 )
 

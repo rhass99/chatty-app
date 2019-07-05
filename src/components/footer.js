@@ -3,6 +3,7 @@ import {footerContainer, mapDispatchToProps, mapStateToProps} from './container'
 import { connect } from 'react-redux';
 
 const Footer = (props) => {
+  // Client ws Listener
   props.socket.onmessage = ((message) => {
     const msg = JSON.parse(message.data)
     console.log(msg[0])
@@ -48,26 +49,3 @@ const Footer = (props) => {
 
 const FooterCMP = connect(mapStateToProps, mapDispatchToProps)(footerContainer(Footer))
 export default FooterCMP
-
-/**
- * socket.AddEventListener('message', dispatch(action))
- * in the clinet keep a flag of isOpen
- * if open u can send
- * if close create a new socket connection
- */
-/**
- {
-        (e) => {
-          if (e.key === 'Enter') {
-            props.handleUpdateMessageList(
-              {
-              id: Math.random().toString().replace('0.', ''),
-              type: "sys",
-              text: "This is a text",
-              user: "rami"
-              }
-            )
-          }
-        } 
-      }
- */

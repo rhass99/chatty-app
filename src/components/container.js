@@ -25,7 +25,7 @@ export const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
+// Returns the message component with the messageList props
 export const messagesContainer = (Messages) => (
   class extends Component {
     render() {
@@ -39,6 +39,7 @@ export const messagesContainer = (Messages) => (
   }
 )
 
+// Returns the footer component with the redux actions as props
 export const footerContainer = (Footer) => (
   class extends Component {
     render() {      
@@ -59,6 +60,7 @@ export const footerContainer = (Footer) => (
   }
 )
 
+// Returns the nav component with the number of online users as props
 export const navContainer = (Nav) => (
   class extends Component {
     render() {
